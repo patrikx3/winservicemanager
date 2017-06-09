@@ -430,7 +430,10 @@ namespace chc.servicemanagertray
         /// <param name="e"></param>
         private void ServiceManagerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason != CloseReason.ApplicationExitCall)
+            if (e.CloseReason.Equals(CloseReason.WindowsShutDown)) {
+
+            }
+            else if (e.CloseReason != CloseReason.ApplicationExitCall)
             {
                 e.Cancel = true;
                 WindowState = FormWindowState.Minimized;
